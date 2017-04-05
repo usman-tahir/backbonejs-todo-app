@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Todo MVC</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/index.css">
+  </head>
+  <body>
+    <section class="todo-app">
+      <header class="header">
+        <h1>Todos</h1>
+        <input class="new-todo" placeholder="What needs to be done?" autofocus="true">
+      </header>
+      <section class="main">
+        <input class="toggle-all" id="toggleAll" type="checkbox">
+        <label for="toggle-all">Mark all as complete</label>
+        <ul class="todo-list"></ul>
+      </section>
+      <footer class="footer"></footer>
+    </section>
+    <footer class="info">
+      <p>Double click to edit a todo</p>
+    </footer>
+
+    <script type="text/template" id="itemTemplate">
+      <div class="view">
+        <input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
+        <label><%- title %></label>
+        <button class="destroy"></button>
+      </div>
+      <input class="edit" value="<%- title %>">
+    </script>
+
+    <script type="text/template">
+      <span class="todo-count">
+        <strong><%= remaining %></strong> <%= remaining === 1 ? 'item' : 'items' %> left
+      </span>
+      <ul class="filters">
+        <li>
+          <a class="selected" href="#/">All</a>
+        </li>
+        <li>
+          <a href="#/active">Active</a>
+        </li>
+        <li>
+          <a href="#/completed">Completed</a>
+        </li>
+      </ul>
+      <% if (completed) { %>
+        <button class="clear-completed">Clear completed</button>
+      <% } %>
+    </script>
+  </body>
+</html>
